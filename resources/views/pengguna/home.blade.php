@@ -1,0 +1,10 @@
+@extends('layouts.app')
+@section('tittle')
+    Home
+@endsection
+@section('content')
+    @include('components.navbar')
+    @include('components.hero')
+    @include('components.all-blog')
+    @include('components.footer')
+@endsection
