@@ -22,6 +22,10 @@ class Login extends Component
         ];
     }
 
+    public function showPassword(){
+        
+    }
+
     public function login(){
         $validate = $this->validate();
         $cekUser = LoginController::store($validate);

@@ -36,6 +36,7 @@ class LoginController extends Controller
         if ($user && Hash::check($request['password'], $user->password)) {
             // Set session or perform login
             Auth::login($user);
+            
             return true;
         }
         return false;
