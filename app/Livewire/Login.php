@@ -2,9 +2,10 @@
 
 namespace App\Livewire;
 
-use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Redirect;
 use Livewire\Component;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\LoginController;
 
 class Login extends Component
 {
@@ -30,8 +31,10 @@ class Login extends Component
         $validate = $this->validate();
         $cekUser = LoginController::store($validate);
         if(!$cekUser){
+            Alert::error('Gagal', 'Gagal Login');
             return $this->redirectRoute('login.index',navigate:true);
         }
+        Alert::success('Berhasil', 'Berhasil Login');
          return $this->redirectRoute('home.index',navigate:true);
 
     }

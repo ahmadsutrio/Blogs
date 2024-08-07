@@ -3,16 +3,22 @@
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.2/ckeditor5.css" />
 @endpush
 @section('admin.content')
-    <form class="row g-3 mx-lg-3" method="post" action="{{ route('admin.store') }}" enctype="multipart/form-data">
+    <form class="row g-3 mx-lg-3" method="post" action="{{ route('admin.update',['slug'=>$data_blog['slug']]) }}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
         <div class="col-md-6">
             <label for="inputTitle" class="form-label">Title</label>
-            <input type="text" name="title" value="{{ $data_blog['title'] }}" class="form-control @error('title') is-invalid @enderror" id="inputTitle">
+            <input type="text" name="title" value="{{ $data_blog['title'] }}" class="form-control @error('title') is-invalid @enderror @session('title') is-invalid @endsession " id="inputTitle">
             @error('title')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
             @enderror
+            @session('title')
+                 <div class="invalid-feedback">
+                    {{ session('title') }}
+                </div>
+            @endsession
         </div>
         <div class="col-md-6">
             <label for="inputTitle" class="form-label">Status</label>

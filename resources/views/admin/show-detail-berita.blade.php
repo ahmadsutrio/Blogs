@@ -32,7 +32,7 @@
 @endpush
 @section('admin.content')
     <div class="row overflow-hidden justify-content-center">
-        <img src="{{ asset('/storage/' . $data_blog->foto) }}" alt="" class="img-fluid  border col-lg-8 bg-danger">
+        <img src="{{ asset('/storage/' . $data_blog->foto) }}" alt="" class="img-fluid  col-lg-8 ">
         <h3 class="title col-lg-8 fs-1 my-4">{{ $data_blog->title }}</h3>
         <div class="col-lg-8 d-flex items-center gap-3 border-b-2">
             <div class="avatar"></div>

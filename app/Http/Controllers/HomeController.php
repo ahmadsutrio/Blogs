@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,7 +12,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pengguna.home');
+        $dataBlog = Blog::latest()->with('Users')->paginate(20);
+        return view('pengguna.home',['data_blog' => $dataBlog]);
     }
 
     /**
@@ -33,9 +35,14 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $slug)
     {
-        //
+        $cekBlog = Blog::where('slug', $slug)->with('Users')->first();
+        if (!$cekBlog) {
+            return redirect()->route('home.index');
+        }
+        $dataBlog = Blog::where('slug', $slug)->with('Users')->first();
+        return view('pengguna.single-blog', ['data_blog' => $dataBlog]);
     }
 
     /**

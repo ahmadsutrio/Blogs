@@ -13,7 +13,9 @@
 </head>
 
 <body class="w-full mx-auto">
+    @include('components.navbar')
     @yield('content')
+    @include('components.footer')
     @stack('scripts')
     @livewireScripts
 </body>

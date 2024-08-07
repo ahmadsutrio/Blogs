@@ -23,8 +23,8 @@ class BlogFactory extends Factory
             'title'=>$title,
             'slug'=>Str::slug($title),
             'status'=>fake()->randomElement($status),
-            'foto'=>"blogs/foto.png",
-            'content'=>fake()->paragraph(20),
+            'foto'=>"public/blogs/default.png",
+            'content'=>fake()->paragraph(100),
             'id_users'=>1,
             'id_kategori'=>1
         ];

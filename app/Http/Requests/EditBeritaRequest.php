@@ -22,7 +22,11 @@ class EditBeritaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'slug'=>['required','exists:blogs,slug'],
+            'title' => ['required'],
+            'status' => ['required', 'in:published,private'],
+            'foto' => ['nullable', 'file', 'mimes:jpg,jpeg,png', 'max:2048'],
+            'content' => ['required'],
+            'id_kategori' => ['required', 'exists:kategori_blogs,id'],
         ];
     }
 }

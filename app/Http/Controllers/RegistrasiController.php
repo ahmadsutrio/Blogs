@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\RegistrasiRequest;
 use App\Models\User;
+use ReturnTypeWillChange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use ReturnTypeWillChange;
+use App\Http\Requests\RegistrasiRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegistrasiController extends Controller
 {
@@ -33,7 +34,8 @@ class RegistrasiController extends Controller
     {
         $validate = $request->validated();
         $validate['password'] = Hash::make($request['password']);
-        User::create($validate);   
+        User::create($validate);
+        Alert::success('Berhasil', 'Berhasil Register');
 
         return redirect()->route('home.index');
     }
